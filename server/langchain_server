@@ -1,0 +1,50 @@
+#!/usr/bin/env python
+from langchain_mcp_adapters.client import MultiServerMCPClient
+from langgraph.prebuilt import create_react_agent
+import os 
+import asyncio
+from dotenv import load_dotenv
+import json 
+
+from langchain_groq import ChatGroq
+
+load_dotenv()
+# For tracing using langsmith
+
+os.environ['LANGCHAIN_TRACING_V2']='true'
+#os.environ['LANGCHAIN_API_KEY']=os.getenv('langchain_api_key')
+
+llm = ChatGroq(
+    model="qwen/qwen3-32b",
+    temperature=0.6,
+    max_tokens=4096,
+    api_key=os.getenv("GROQ_API_KEY"),
+)
+
+with open("/Users/phoenixonwork/Documents/coding/projects/mcp_project/mcp_config/mcp_servers_file.json", "r") as f:
+    mcp_config = json.load(f)
+
+client = MultiServerMCPClient(mcp_config)
+
+
+async def main():
+    tools = await client.get_tools()
+
+    agent = create_react_agent(
+        llm,
+        tools
+    )
+
+    print("Langchain Chat Agent: Hello! Type 'exit' or 'quit' to end the conversation.")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() in ["exit", "quit"]:
+            print("Langchain Chat Agent: Goodbye!")
+            break
+        
+        response = await agent.ainvoke(
+            {"messages": [{"role": "user", "content": user_input}]}
+        )
+        print("Langchain Chat Agent:", response["messages"][-1].content)
+
+asyncio.run(main())

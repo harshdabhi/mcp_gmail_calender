@@ -1,0 +1,34 @@
+{
+      "ddg-search": {
+          "command": "uvx",
+          "transport": "stdio",
+          "args": ["duckduckgo-mcp-server"]
+      },
+
+   
+      "calendar": {
+        "command": "npx",
+        "transport": "stdio",
+        "args": ["-y", "@cablate/mcp-google-calendar"],
+        "env": {
+          "GOOGLE_CALENDAR_ID": "h67dabhi@gmail.com",
+          "GOOGLE_TIME_ZONE": "Europe/Dublin",
+          "GOOGLE_CREDENTIALS_PATH": "/Users/phoenixonwork/Documents/coding/projects/keys/secretv3.json"
+        },
+        "enabled": "true"
+      },
+
+      
+     
+          "gmail": {
+            "command": "npx",
+            "transport":"stdio",
+            "args": [
+              "@shinzolabs/gmail-mcp"
+            ]
+          }
+
+
+          
+    
+}
