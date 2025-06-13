@@ -88,4 +88,4 @@ After setting these variables, run the agent as described in step 8 of the "Setu
 
 ## Video Demonstration
 
-https://youtu.be/Rjx7djPGeaw
+[![Watch the video](https://img.youtube.com/vi/TzO3gwJRiP8/hqdefault.jpg)](https://www.youtube.com/embed/TzO3gwJRiP8)
