@@ -5,6 +5,7 @@ import os
 import asyncio
 from dotenv import load_dotenv
 import json 
+import mlflow
 
 from langchain_groq import ChatGroq
 
@@ -26,6 +27,11 @@ with open("/Users/phoenixonwork/Documents/coding/projects/mcp_project/mcp_config
 
 client = MultiServerMCPClient(mcp_config)
 
+### Use when we need to trace on local devices or server without use of langsmith
+
+# mlflow.set_tracking_uri("http://127.0.0.1:5000")
+# mlflow.set_experiment('mlflow langchain v2')
+# mlflow.langchain.autolog()
 
 async def main():
     tools = await client.get_tools()
