@@ -6,68 +6,71 @@ This project demonstrates a Langchain agent integrated with multiple MCP (Multi-
 
 To run this project on your local system using `uv`, follow these steps:
 
-1.  **Clone the repository:**
+1. **Clone the repository:**
 
-    ```bash
-    git clone <repository_url>
-    cd <repository_directory>
-    ```
+   ```bash
+   git clone https://github.com/harshdabhi/mcp_gmail_calender.git
+   cd mcp_gmail_calender
 
-2.  **Install `uv`:**
 
-    If you don't have `uv` installed, you can install it using pip:
-    ```bash
-    pip install uv
-    ```
-    Or, if you prefer a standalone executable, follow the instructions on the official `uv` documentation.
+   ```
+2. **Install `uv`:**
 
-3.  **Install Python Dependencies:**
+   If you don't have `uv` installed, you can install it using pip:
 
-    Ensure you have all the necessary Python packages installed. From the project root, run:
-    ```bash
-    uv pip install -r requirements.txt
-    ```
+   ```bash
+   pip install uv
+   ```
 
-4.  **Set up Environment Variables (.env file):**
+   Or, if you prefer a standalone executable, follow the instructions on the official `uv` documentation.
+3. **Install Python Dependencies:**
 
-    Create a `.env` file in the root of your project and add your `GROQ_API_KEY`:
-    ```
-    GROQ_API_KEY=your_groq_api_key
-    ```
-    Replace `your_groq_api_key` with your actual Groq API key.
+   Ensure you have all the necessary Python packages installed. From the project root, run:
 
-5.  **Configure MCP Servers:**
+   ```bash
+   uv pip install -r requirements.txt
+   ```
+4. **Set up Environment Variables (.env file):**
 
-    The project uses a `mcp_config/mcp_servers_file.json` to configure the MCP servers. Ensure this file is correctly set up with the paths to your local MCP server implementations.
+   Create a `.env` file in the root of your project and add your `GROQ_API_KEY`:
 
-6.  **Gmail MCP Server Setup:**
+   ```
+   GROQ_API_KEY=your_groq_api_key
+   ```
 
-    For detailed instructions on how to enable and authenticate the Gmail MCP server, refer to its documentation:
-    [https://glama.ai/mcp/servers/@GongRzhe/Gmail-MCP-Server](https://glama.ai/mcp/servers/@GongRzhe/Gmail-MCP-Server)
+   Replace `your_groq_api_key` with your actual Groq API key.
+5. **Configure MCP Servers:**
 
-    A common step involves moving your `gcp-oauth.keys.json` to `~/.gmail-mcp/` and running an `npx` command for authentication:
-    ```bash
-    mkdir -p ~/.gmail-mcp/
-    mv <path_to_your_gcp-oauth.keys.json> ~/.gmail-mcp/
-    npx @gongrzhe/server-gmail-autoauth-mcp auth
-    ```
-    *Note: You need Node.js and npm installed for `npx` to work. If you encounter `npx: command not found`, please install Node.js and npm (e.g., using `brew install node` on macOS).* 
+   The project uses a `mcp_config/mcp_servers_file.json` to configure the MCP servers. Ensure this file is correctly set up with the paths to your local MCP server implementations.
+6. **Gmail MCP Server Setup:**
 
-7.  **Google Calendar MCP Server Setup:**
+   For detailed instructions on how to enable and authenticate the Gmail MCP server, refer to its documentation:
+   [https://glama.ai/mcp/servers/@GongRzhe/Gmail-MCP-Server](https://glama.ai/mcp/servers/@GongRzhe/Gmail-MCP-Server)
 
-    For detailed instructions on how to enable and use the Google Calendar MCP server, refer to its documentation:
-    [https://glama.ai/mcp/servers/@cablate/mcp-google-calendar](https://glama.ai/mcp/servers/@cablate/mcp-google-calendar)
+   A common step involves moving your `gcp-oauth.keys.json` to `~/.gmail-mcp/` and running an `npx` command for authentication:
 
-    Similar to Gmail, you might need to set up authentication and ensure `GOOGLE_CALENDAR_ID`, `GOOGLE_TIME_ZONE`, and `GOOGLE_CREDENTIALS_PATH` are correctly configured, preferably via environment variables in your `.env` file.
+   ```bash
+   mkdir -p ~/.gmail-mcp/
+   mv <path_to_your_gcp-oauth.keys.json> ~/.gmail-mcp/
+   npx @gongrzhe/server-gmail-autoauth-mcp auth
+   ```
 
-8.  **Run the Langchain Agent:**
+   *Note: You need Node.js and npm installed for `npx` to work. If you encounter `npx: command not found`, please install Node.js and npm (e.g., using `brew install node` on macOS).*
+7. **Google Calendar MCP Server Setup:**
 
-    Once all dependencies are installed and configurations are in place, you can run the Langchain agent:
-    ```bash
-    python server/langchain_server
-    ```
+   For detailed instructions on how to enable and use the Google Calendar MCP server, refer to its documentation:
+   [https://glama.ai/mcp/servers/@cablate/mcp-google-calendar](https://glama.ai/mcp/servers/@cablate/mcp-google-calendar)
 
-    This will start an interactive chat in your terminal. Type your queries, and the agent will respond using the configured MCP tools. Type `exit` or `quit` to end the session.
+   Similar to Gmail, you might need to set up authentication and ensure `GOOGLE_CALENDAR_ID`, `GOOGLE_TIME_ZONE`, and `GOOGLE_CREDENTIALS_PATH` are correctly configured, preferably via environment variables in your `.env` file.
+8. **Run the Langchain Agent:**
+
+   Once all dependencies are installed and configurations are in place, you can run the Langchain agent:
+
+   ```bash
+   python server/langchain_server
+   ```
+
+   This will start an interactive chat in your terminal. Type your queries, and the agent will respond using the configured MCP tools. Type `exit` or `quit` to end the session.
 
 ## LangSmith Tracing
 
@@ -85,4 +88,4 @@ After setting these variables, run the agent as described in step 8 of the "Setu
 
 ## Video Demonstration
 
-[https://youtu.be/Rjx7djPGeaw](https://youtu.be/Rjx7djPGeaw)
+https://youtu.be/Rjx7djPGeaw
